@@ -61,9 +61,18 @@ function drawGraph(name, bedrooms, controlVar){
         .attr('y', posY)
         .attr('width', rectWidth)
         .attr('height', scale)
+        .attr('class', 'graph')
     
     //Axis
-    
+    function maxTicks(){
+        if (maxInput >= 10){
+            console.log(maxInput)
+            return 10
+        }else{
+            console.log('entra al else')
+            return maxInput
+        }
+    }
 
     const axisX = d3.axisBottom(scaleX).ticks(0);
 
@@ -72,12 +81,13 @@ function drawGraph(name, bedrooms, controlVar){
                 .attr('transform', `translate(0, ${height-40})`);
 
 
-    const axisY = d3.axisLeft(scaleY).ticks(maxInput)
+    const axisY = d3.axisLeft(scaleY).ticks(maxTicks())
+    
     
     graphicGroup.append('g')
+                .attr('class', 'axis')
                 .call(axisY)
-                .attr('transform', `translate(${width-(width-20)},0)`)
-
+                .attr('transform', `translate(${width-(width-20)},0)`)        
     //Axis END
 
     function scale(d) {
@@ -106,12 +116,14 @@ function drawGraph(name, bedrooms, controlVar){
         .text(d => {
             return `${d.bedrooms} bedrooms`   
         });
-    const title = graphicGroup.append('text');
+    const neighborhoodName = graphicGroup.append('text');
     
-    title 
-        .attr('x', 35)
-        .attr('y', 20)
-        .text(name)
+    neighborhoodName 
+                    .attr('x', 20)
+                    .attr('y', 30)
+                    .attr('class', 'title')
+                    .text(name)
+                    
         
 
 }

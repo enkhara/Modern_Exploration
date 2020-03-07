@@ -1,17 +1,17 @@
 console.log('hola desde map');
 
-/*d3.json('https://gist.githubusercontent.com/miguepiscy/2d431ec3bc101ef62ff8ddd0e476177f/raw/2482274db871e60195b7196c602700226bdd3a44/practica.json')
+d3.json('https://gist.githubusercontent.com/miguepiscy/2d431ec3bc101ef62ff8ddd0e476177f/raw/2482274db871e60195b7196c602700226bdd3a44/practica.json')
     .then((featureCollection) => {
         console.log(featureCollection);
         drawMap(featureCollection);
          
-    })*/
-
-d3.json('https://storage.cloud.google.com/enkhara/geoJson/airbnb-listings.geojson')
+    })
+/*
+d3.json('https://raw.githubusercontent.com/enkhara/Modern_Exploration/master/airbnb-listings.json')
     .then((featureCollection) => {
         console.log(featureCollection)
         drawMap(featureCollection)
-    })
+    })*/
     .catch((error) => {
         console.log('error', error);
     });
@@ -48,18 +48,28 @@ d3.json('https://storage.cloud.google.com/enkhara/geoJson/airbnb-listings.geojso
         neighborhood.attr('d', (d) => {
             d.opacity=1;
             return pathProjection(d)
+            
         });
- 
+        
 
+        const popUp = groupMap.append('text')
+        
         //Mouse EVENTS
         groupMap.selectAll('path')
-                .on('mouseover', function(){
+                .on('mouseover', function(d){
+                    
                     d3.select(this).style('fill-opacity', 1.0);
+                    
+                    popUp
+                        .attr('x',this.getBoundingClientRect().x)
+                        .attr('y', this.getBoundingClientRect().y)
+                        .text(`${d.properties.name}, ${d.properties.avgprice} euros `)
                 })
 
         groupMap.selectAll('path')
                 .on('mouseout', function(){
                     d3.select(this).style('fill-opacity', 0.7);
+                    popUp.text('')
                 })
 
         let clicks = 0;
@@ -75,6 +85,9 @@ d3.json('https://storage.cloud.google.com/enkhara/geoJson/airbnb-listings.geojso
         const xMax = d3.max(features, (d) => d.properties.avgprice);
         const xMin = d3.min(features, (d) => d.properties.avgprice);
         
+        const quantize = d3.scaleQuantize()
+                            .domain([xMin, xMax])
+
         const colorScale = d3.scaleLinear()
                             .domain([xMin, xMax])
                             .range(['yellow', 'red']);
@@ -89,6 +102,7 @@ d3.json('https://storage.cloud.google.com/enkhara/geoJson/airbnb-listings.geojso
                     .attr('fill-opacity', 0.7)
     
         //legend End
+       
     }
 
    

@@ -15,7 +15,8 @@
       width: 49%;
   }*/
 html, body{
-    height: 90%;
+    height: 100%;
+    background-color: gainsboro;
 }
 
 .contenedor{
@@ -24,11 +25,38 @@ html, body{
 .elemento{
     width:49%;
     height: 100%;
-    background-color:white;
-    border: 4px;
+    
+
 }
 /*
 #map {
     width: 800px;
     height: 400px;
   }*/
+
+.onMouseOver{
+    stroke-width: 2px;
+    
+}
+
+/*#map {width: 48%;}
+
+#graph {width: 48%;}
+*/
+svg {
+    border: 1px solid #000000;
+    background-color: white;
+}
+rect {
+    stroke: SteelBlue;
+    stroke-width: 2;
+    fill: LightSteelBlue;
+}
+rect:hover {
+    fill: SteelBlue;
+}
+
+title {
+    
+    color: violet;
+}

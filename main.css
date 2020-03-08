@@ -1,50 +1,30 @@
 
 html, body{
     height: 100%;
-    background-color: gainsboro;
+    background-color: rgb(233, 232, 232);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 .contenedor{
     display:flex;
 }
 .elemento{
-    width:49%;
-    height: 100%;  
+    width:600;
 }
-/*
-#map {
-    width: 800px;
-    height: 400px;
-  }*/
-
 .onMouseOver{
     stroke-width: 2px;
     
 }
-
 svg {
     border: 1px solid #000000;
     background-color: white;
 }
-/*
-rect {
-    stroke: SteelBlue;
-    stroke-width: 2;
-    fill: LightSteelBlue;
-}
-rect:hover {
-    fill: SteelBlue;
-}*/
-
- .title{
+.title{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 25px;
-    
+    font-size: 20px; 
 }
 text{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 10;
+    font-size: 10;  
 }
 .graph {
     stroke: orangered;
@@ -56,5 +36,6 @@ rect:hover {
 }
 .axis text {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 8;
+    font-size: 10;
+    font-weight: lighter;
 }

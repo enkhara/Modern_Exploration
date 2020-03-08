@@ -82,8 +82,20 @@ d3.json('https://raw.githubusercontent.com/enkhara/Modern_Exploration/master/air
         //Mouse EVENT END
         
         //legend
+        
+
         const xMax = d3.max(features, (d) => d.properties.avgprice);
         const xMin = d3.min(features, (d) => d.properties.avgprice);
+        /*
+        function legendCells(){
+            const increaseValue = Math.round( xMax / 5 ) 
+            let cellsValue = [0]
+            for (let i = 0; i < 5; i++){
+                cellsValue[i] = 
+            }
+             
+        }*/
+        const legendCells = ['0 - 15', '16-80', '81-150', '151 - 300']
         
         const quantize = d3.scaleQuantize()
                             .domain([xMin, xMax])
@@ -91,16 +103,20 @@ d3.json('https://raw.githubusercontent.com/enkhara/Modern_Exploration/master/air
         const colorScale = d3.scaleLinear()
                             .domain([xMin, xMax])
                             .range(['yellow', 'red']);
+
         const legend = d3   .legendColor()
+                            
                             .scale(colorScale);
         
         svgMap  .append('g')
                 .call(legend)
                 .attr('transform', 'translate(400,10)')
         
+
         neighborhood.attr('fill',(d) => colorScale(d.properties.avgprice))
                     .attr('fill-opacity', 0.7)
     
+        
         //legend End
        
     }

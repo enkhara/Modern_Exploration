@@ -45,7 +45,7 @@ function drawGraph(name, bedrooms, controlVar){
         
     const scaleX = d3.scaleLinear()
                     .domain([0, 5])
-                     .range([20, width - 20])
+                     .range([20, width - 40])
         
                     
     const graphicGroup = svgGraph.selectAll('g')
@@ -78,7 +78,7 @@ function drawGraph(name, bedrooms, controlVar){
 
     graphicGroup.append('g')
                 .call(axisX)
-                .attr('transform', `translate(0, ${height-40})`);
+                .attr('transform', `translate(20, ${height-40})`);
 
 
     const axisY = d3.axisLeft(scaleY).ticks(maxTicks())
@@ -87,7 +87,7 @@ function drawGraph(name, bedrooms, controlVar){
     graphicGroup.append('g')
                 .attr('class', 'axis')
                 .call(axisY)
-                .attr('transform', `translate(${width-(width-20)},0)`)        
+                .attr('transform', `translate(${width-(width-40)},0)`)        
     //Axis END
 
     function scale(d) {
@@ -101,7 +101,7 @@ function drawGraph(name, bedrooms, controlVar){
     }
         
     function posX ( d, index )  {
-        return index * ( rectWidth + 20 ) +35;
+        return index * ( rectWidth + 20 ) +42;
     }
     
     function posY (d) {
@@ -119,7 +119,7 @@ function drawGraph(name, bedrooms, controlVar){
     const neighborhoodName = graphicGroup.append('text');
     
     neighborhoodName 
-                    .attr('x', 20)
+                    .attr('x', 35)
                     .attr('y', 30)
                     .attr('class', 'title')
                     .text(name)

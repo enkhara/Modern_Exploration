@@ -1,4 +1,4 @@
-# Práctica Airbnb
+# Práctica Modern Exploration Airbnb
 
 ## Estructura de la prácitca:
 

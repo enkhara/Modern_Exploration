@@ -2,10 +2,10 @@
 
 ## Estructura de la prácitca:
 
-- [index.html]()
-- [main.css]()
-- [map.js]()
-- [graphic.js]()
+- [index.html](/index.html)
+- [main.css](/main.css)
+- [map.js](/map.js)
+- [graphic.js](/graphic.js)
 
 ### Index.html
 
